@@ -4,11 +4,20 @@ import React from "react"
 import Todo from './Todo'
 
 const TodoList = (props) => {
+
+    const handleClick = () => {
+        props.handleTaskCompleted();
+    };
+
     return(
         <div className="task-list">
             {props.taskToDo.map((item) => (
-                <Todo key={item.id} item={item} />
+                <Todo handleItemToggle={props.handleItemToggle} key={item.id} item={item} />
             ))}
+            <button 
+            onClick={handleClick}
+            className="clr-button">
+                Clear Task</button>
         </div>
     )
 };
